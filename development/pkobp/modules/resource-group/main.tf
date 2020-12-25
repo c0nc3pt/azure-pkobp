@@ -11,6 +11,7 @@ resource "azurerm_resource_group" "pkobp_resource_group" {
         "platforma"         = var.tag_platforma
         "description"       = var.tag_description
     }
+    
 }
 
 resource "azurerm_management_lock" "resource_group_level_lock" {

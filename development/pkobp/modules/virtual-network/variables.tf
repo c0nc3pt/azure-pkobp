@@ -25,5 +25,5 @@ variable "address_space" {
 variable "dns_servers" {
     description = "Adresy serwerów DNS. Default ustawiony na serwer DNS Azure"
     type        = list
-    default     = ["168.63. 129.16"]
+    default     = ["168.63.129.16"]
 }
