@@ -125,3 +125,9 @@ EOF
     type        = map(list(any))
     default     = {}
 }
+
+variable "route_table_id" {
+    description = "ID Route Table, ktora ma zostac nalozona na subnet"
+    type        = string
+    default     = null
+}

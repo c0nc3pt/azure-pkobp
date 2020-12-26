@@ -240,3 +240,58 @@ variable "subnet_delegation_10_245_1_128__25" {
         ]
     }
 }
+
+
+variable "rt_name_10_245_0_0__25" {
+    description             = "Nazwa route table"
+    type                    = string
+    default                 = "rt_10_245_0_0__25"
+}
+
+variable "rt_disable_bgp_route_propagation_10_245_0_0__25" {
+    description             = "Okreslenie czy do route table maja zostac dodane drogi propagowane przez BGP"
+    type                    = bool
+    default                 = false 
+}
+
+variable "route_name_01_10_245_0_0__25" {
+    description             = "nazwa route w route table"
+    type                    = string
+    default                 = "route_01_10_245_0_0__25" 
+}
+
+variable "route_address_prefix_01_10_245_0_0__25" {
+    description             = "Prefix dla drogi w formacie 0-255.0-255.0-255.0-255/0-32 np. 10.13.0.0/16"
+    type                    = string
+    default                 = "10.13.0.0/16" 
+}
+
+variable "route_next_hop_type_01_10_245_0_0__25" {
+    description             = "Rodzaj next hop, poprawne wartosci to VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance and None"
+    type                    = string
+    default                 = "VirtualAppliance"
+}
+
+variable "route_next_hop_in_ip_address_01_10_245_0_0__25" {
+    description             = "Adres IP next hop ma zastosowanie tylko jezeli next_hop_type jest ustawiony na VirtualAppliance"
+    type                    = string  
+    default                 = "10.255.231.69"
+}
+
+variable "route_name_02_10_245_0_0__25" {
+    description             = "nazwa route w route table"
+    type                    = string
+    default                 = "route_02_10_245_0_0__25" 
+}
+
+variable "route_address_prefix_02_10_245_0_0__25" {
+    description             = "Prefix dla drogi w formacie 0-255.0-255.0-255.0-255/0-32 np. 10.13.0.0/16"
+    type                    = string
+    default                 = "172.16.0.0/16" 
+}
+
+variable "route_next_hop_type_02_10_245_0_0__25" {
+    description             = "Rodzaj next hop, poprawne wartosci to VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance and None"
+    type                    = string
+    default                 = "None"
+}

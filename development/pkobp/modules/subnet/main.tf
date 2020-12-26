@@ -27,3 +27,10 @@ resource "azurerm_subnet" "pkobp_subnet" {
         }
     }
 }
+
+resource "azurerm_subnet_route_table_association" "pkobp_subnet_route_table_association" {
+    count                                           = var.route_table_id != null ? 1 : 0
+
+    subnet_id                                       = azurerm_subnet.pkobp_subnet.id
+    route_table_id                                  = var.route_table_id
+}

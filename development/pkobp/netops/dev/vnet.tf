@@ -14,8 +14,8 @@ module "resource_group" {
     tag_ssgw                = var.rg_tag_ssgw
     tag_platforma           = var.rg_tag_platforma
     tag_description         = var.rg_tag_description
-    
-    lock_level              = var.rg_lock_level
+    # TODO: zmienic ponizsze aby mozna bylo znowu nalozyc locka
+    lock_level              = "" # var.rg_lock_level
 }
 
 module "virtual_network" {
@@ -34,7 +34,9 @@ module "virtual_network" {
     dns_servers             = var.vnet_dns_servers
 }
 
-# NOTE: Przyklad subnetu, w ktorym mozna tworzyc private link endpoint, nie mozna private link service i nie ma service endpoint 
+# NOTE: Przyklad subnetu, w ktorym mozna tworzyc private link endpoint, 
+# nie mozna private link service i nie ma service endpoint 
+# na subnet nalozony jest route table
 module "subnet_10_245_0_0__25" {
     providers               = {
         azurerm             = azurerm.provider-dev
@@ -54,6 +56,8 @@ module "subnet_10_245_0_0__25" {
 
     service_endpoints                              = var.subnet_service_endpoints_10_245_0_0__25
     service_endpoint_policy_ids                    = var.subnet_service_endpoint_policy_ids_10_245_0_0__25
+
+    route_table_id                                 = module.route_table_10_245_0_0__25.id
 }
 
 # NOTE: Przyklad subnetu, w ktorym nie mozna tworzyc private link endpoint, private link service i nie ma service endpoint 
@@ -128,6 +132,61 @@ module "subnet_10_245_1_128__25" {
     subnet_delegation                              = var.subnet_delegation_10_245_1_128__25
 }
 
+
+module "route_table_10_245_0_0__25" {
+    providers               = {
+        azurerm             = azurerm.provider-dev
+    }
+
+    source                                         = "../../modules/route-table"
+
+    route_table_name                               = var.rt_name_10_245_0_0__25
+
+    rg_name                                        = module.resource_group.name
+    location                                       = module.resource_group.location
+    
+    disable_bgp_route_propagation                  = var.rt_disable_bgp_route_propagation_10_245_0_0__25
+}
+
+module "route_01_10_245_0_0__25" {
+
+    providers = {
+      azurerm = azurerm.provider-dev
+    }
+
+    source                                         = "../../modules/route"
+
+    route_name                                     = var.route_name_01_10_245_0_0__25
+
+    rg_name                                        = module.resource_group.name
+
+    route_table_name                               = module.route_table_10_245_0_0__25.name
+
+    address_prefix                                 = var.route_address_prefix_01_10_245_0_0__25
+
+    next_hop_type                                  = var.route_next_hop_type_01_10_245_0_0__25
+    next_hop_in_ip_address                         = var.route_next_hop_in_ip_address_01_10_245_0_0__25
+}
+
+module "route_02_10_245_0_0__25" {
+
+    providers = {
+      azurerm = azurerm.provider-dev
+    }
+
+    source                                         = "../../modules/route"
+
+    route_name                                     = var.route_name_02_10_245_0_0__25
+
+    rg_name                                        = module.resource_group.name
+
+    route_table_name                               = module.route_table_10_245_0_0__25.name
+
+    address_prefix                                 = var.route_address_prefix_02_10_245_0_0__25
+
+    next_hop_type                                  = var.route_next_hop_type_02_10_245_0_0__25
+    
+}
 
 /*
 module "subnet" {
