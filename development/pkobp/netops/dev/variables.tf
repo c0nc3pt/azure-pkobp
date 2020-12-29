@@ -295,3 +295,190 @@ variable "route_next_hop_type_02_10_245_0_0__25" {
     type                    = string
     default                 = "None"
 }
+
+variable "nsg_name_10_245_0_0__25" {
+    description             = "Nazwa NSG"
+    type                    = string 
+    default                 = "nsg_10_245_0_0__25" 
+}
+
+variable "nsg_rule_name_in_1000__10_245_0_0__25" {
+    description = "Nazwa security rule w NSG"
+    type        = string
+    default     = "allow-ssh-from-anywhere"
+}
+
+variable "nsg_rule_description_in_1000__10_245_0_0__25" {
+    description = "Opis security rule w NSG"
+    type        = string
+    default     = "regula pozwalajaca na ssh z kazdego miejsca"
+}
+
+variable "nsg_rule_direction_in_1000__10_245_0_0__25" {
+    description             = "Kierunek dzialania reguly, mozliwe wartosci Inbound i Outbound"
+    type                    = string
+    default                 = "Inbound"
+}
+
+variable "nsg_rule_priority_in_1000__10_245_0_0__25" {
+    description             = "Priorytet reguly, moze przyjac wartosci od 100 do 4096. Priorytet musi byc unikalny"
+    type                    = number
+    default                 = 1000
+}
+
+variable "nsg_rule_protocol_in_1000__10_245_0_0__25" {
+    description             = "Protokol dla reguly, mozliwe wartosci Tcp, Udp, Icmp, lub * (czyli wszystkie protokoly)"
+    type                    = string
+    default                 = "TCP"
+}
+
+variable "nsg_rule_access_in_1000__10_245_0_0__25" {
+    description             = "Allow lub Deny dla reguly"
+    type                    = string
+    default                 = "Allow"
+}
+
+variable "nsg_rule_source_address_prefix_in_1000__10_245_0_0__25" {
+    description             = "Specyfikacja adresow zrodlowych, mozliwe wartosci to adres IP, IP range, * (aby okreslic any), lub jeden z tagow: VirtualNetwork, AzureLoadBalancer and Internet"
+    type                    = string
+    default                 = "*"
+}
+
+variable "nsg_rule_source_port_range_in_1000__10_245_0_0__25" {
+    description             = "Adres lub zakres portow zrodlowych, mozliwe wartosci liczba calkowita lub zakres pomiedzy 0 a 65535 lub *, aby okreslic any"
+    type                    = string
+    default                 = "*"
+}
+
+variable "nsg_rule_destination_port_range_in_1000__10_245_0_0__25" {
+    description             = "Adres lub zakres portow docelowych, mozliwe wartosci liczba calkowita lub zakres pomiedzy 0 a 65535 lub *, aby okreslic any"
+    type                    = string
+    default                 = "22"
+}
+
+variable "nsg_rule_destination_address_prefix_in_1000__10_245_0_0__25" {
+    description             = "Specyfikacja adresow docelowych, mozliwe wartosci to adres IP, IP range, * (aby okreslic any), lub jeden z tagow: VirtualNetwork, AzureLoadBalancer and Internet. Dodatkowo mozna wykorzystac Service Tagi: az network list-service-tags -l westeurope"
+    type                    = string
+    default                 = "10.245.0.4"
+}
+
+variable "nsg_rule_name_in_1010__10_245_0_0__25" {
+    description = "Nazwa security rule w NSG"
+    type        = string
+    default     = "allow-https-z-10.13.62.100"
+}
+
+variable "nsg_rule_description_in_1010__10_245_0_0__25" {
+    description = "Opis security rule w NSG"
+    type        = string
+    default     = "regula pozwalajaca na https z 10.13.62.100"
+}
+
+variable "nsg_rule_direction_in_1010__10_245_0_0__25" {
+    description             = "Kierunek dzialania reguly, mozliwe wartosci Inbound i Outbound"
+    type                    = string
+    default                 = "Inbound"
+}
+
+variable "nsg_rule_priority_in_1010__10_245_0_0__25" {
+    description             = "Priorytet reguly, moze przyjac wartosci od 100 do 4096. Priorytet musi byc unikalny"
+    type                    = number
+    default                 = 1010
+}
+
+variable "nsg_rule_protocol_in_1010__10_245_0_0__25" {
+    description             = "Protokol dla reguly, mozliwe wartosci Tcp, Udp, Icmp, lub * (czyli wszystkie protokoly)"
+    type                    = string
+    default                 = "TCP"
+}
+
+variable "nsg_rule_access_in_1010__10_245_0_0__25" {
+    description             = "Allow lub Deny dla reguly"
+    type                    = string
+    default                 = "Allow"
+}
+
+variable "nsg_rule_source_address_prefix_in_1010__10_245_0_0__25" {
+    description             = "Specyfikacja adresow zrodlowych, mozliwe wartosci to adres IP, IP range, * (aby okreslic any), lub jeden z tagow: VirtualNetwork, AzureLoadBalancer and Internet"
+    type                    = string
+    default                 = "*"
+}
+
+variable "nsg_rule_source_port_range_in_1010__10_245_0_0__25" {
+    description             = "Adres lub zakres portow zrodlowych, mozliwe wartosci liczba calkowita lub zakres pomiedzy 0 a 65535 lub *, aby okreslic any"
+    type                    = string
+    default                 = "*"
+}
+
+variable "nsg_rule_destination_port_range_in_1010__10_245_0_0__25" {
+    description             = "Adres lub zakres portow docelowych, mozliwe wartosci liczba calkowita lub zakres pomiedzy 0 a 65535 lub *, aby okreslic any"
+    type                    = string
+    default                 = "443"
+}
+
+variable "nsg_rule_destination_address_prefix_in_1010__10_245_0_0__25" {
+    description             = "Specyfikacja adresow docelowych, mozliwe wartosci to adres IP, IP range, * (aby okreslic any), lub jeden z tagow: VirtualNetwork, AzureLoadBalancer and Internet. Dodatkowo mozna wykorzystac Service Tagi: az network list-service-tags -l westeurope"
+    type                    = string
+    default                 = "10.245.0.4"
+}
+
+
+variable "nsg_rule_name_out_1000__10_245_0_0__25" {
+    description = "Nazwa security rule w NSG"
+    type        = string
+    default     = "allow-udp-53-z-10.245.0.0--25"
+}
+
+variable "nsg_rule_description_out_1000__10_245_0_0__25" {
+    description = "Opis security rule w NSG"
+    type        = string
+    default     = "regula pozwalajaca na udp na port 53 z 10.245.0.0/25"
+}
+
+variable "nsg_rule_direction_out_1000__10_245_0_0__25" {
+    description             = "Kierunek dzialania reguly, mozliwe wartosci Inbound i Outbound"
+    type                    = string
+    default                 = "Outbound"
+}
+
+variable "nsg_rule_priority_out_1000__10_245_0_0__25" {
+    description             = "Priorytet reguly, moze przyjac wartosci od 100 do 4096. Priorytet musi byc unikalny"
+    type                    = number
+    default                 = 1000
+}
+
+variable "nsg_rule_protocol_out_1000__10_245_0_0__25" {
+    description             = "Protokol dla reguly, mozliwe wartosci Tcp, Udp, Icmp, lub * (czyli wszystkie protokoly)"
+    type                    = string
+    default                 = "UDP"
+}
+
+variable "nsg_rule_access_out_1000__10_245_0_0__25" {
+    description             = "Allow lub Deny dla reguly"
+    type                    = string
+    default                 = "Allow"
+}
+
+variable "nsg_rule_source_address_prefix_out_1000__10_245_0_0__25" {
+    description             = "Specyfikacja adresow zrodlowych, mozliwe wartosci to adres IP, IP range, * (aby okreslic any), lub jeden z tagow: VirtualNetwork, AzureLoadBalancer and Internet"
+    type                    = string
+    default                 = "10.245.0.0/25"
+}
+
+variable "nsg_rule_source_port_range_out_1000__10_245_0_0__25" {
+    description             = "Adres lub zakres portow zrodlowych, mozliwe wartosci liczba calkowita lub zakres pomiedzy 0 a 65535 lub *, aby okreslic any"
+    type                    = string
+    default                 = "*"
+}
+
+variable "nsg_rule_destination_port_range_out_1000__10_245_0_0__25" {
+    description             = "Adres lub zakres portow docelowych, mozliwe wartosci liczba calkowita lub zakres pomiedzy 0 a 65535 lub *, aby okreslic any"
+    type                    = string
+    default                 = "53"
+}
+
+variable "nsg_rule_destination_address_prefix_out_1000__10_245_0_0__25" {
+    description             = "Specyfikacja adresow docelowych, mozliwe wartosci to adres IP, IP range, * (aby okreslic any), lub jeden z tagow: VirtualNetwork, AzureLoadBalancer and Internet. Dodatkowo mozna wykorzystac Service Tagi: az network list-service-tags -l westeurope"
+    type                    = string
+    default                 = "10.13.62.0/24"
+}

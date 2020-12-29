@@ -188,6 +188,103 @@ module "route_02_10_245_0_0__25" {
     
 }
 
+
+module "nsg_10_245_0_0__25" {
+    
+    providers = {
+      azurerm = azurerm.provider-dev
+    }
+
+    source                                         = "../../modules/nsg"
+    
+    nsg_name                                       = var.nsg_name_10_245_0_0__25
+    
+    rg_name                                        = module.resource_group.name
+    location                                       = module.resource_group.location
+}
+
+module "nsg_security_rule_in_1000__10_245_0_0__25" {
+    providers = {
+        azurerm = azurerm.provider-dev
+    }
+
+    source                                          = "../../modules/nsg-security-rule"
+
+    nsg_rule_name                                   = var.nsg_rule_name_in_1000__10_245_0_0__25
+    nsg_rule_description                            = var.nsg_rule_description_in_1000__10_245_0_0__25
+
+    nsg_name                                        = module.nsg_10_245_0_0__25.name
+    rg_name                                         = module.resource_group.name
+
+    nsg_rule_direction                              = var.nsg_rule_direction_in_1000__10_245_0_0__25
+    nsg_rule_priority                               = var.nsg_rule_priority_in_1000__10_245_0_0__25
+    nsg_rule_access                                 = var.nsg_rule_access_in_1000__10_245_0_0__25
+    nsg_rule_protocol                               = var.nsg_rule_protocol_in_1000__10_245_0_0__25
+
+
+    nsg_rule_source_address_prefix                  = var.nsg_rule_source_address_prefix_in_1000__10_245_0_0__25
+    nsg_rule_source_port_range                      = var.nsg_rule_source_port_range_in_1000__10_245_0_0__25
+
+    nsg_rule_destination_address_prefix             = var.nsg_rule_destination_address_prefix_in_1000__10_245_0_0__25
+    nsg_rule_destination_port_range                 = var.nsg_rule_destination_port_range_in_1000__10_245_0_0__25
+    
+}
+
+module "nsg_security_rule_in_1010__10_245_0_0__25" {
+    providers = {
+        azurerm = azurerm.provider-dev
+    }
+
+    source                                          = "../../modules/nsg-security-rule"
+
+    nsg_rule_name                                   = var.nsg_rule_name_in_1010__10_245_0_0__25
+    nsg_rule_description                            = var.nsg_rule_description_in_1010__10_245_0_0__25
+
+    nsg_name                                        = module.nsg_10_245_0_0__25.name
+    rg_name                                         = module.resource_group.name
+
+    nsg_rule_direction                              = var.nsg_rule_direction_in_1010__10_245_0_0__25
+    nsg_rule_priority                               = var.nsg_rule_priority_in_1010__10_245_0_0__25
+    nsg_rule_access                                 = var.nsg_rule_access_in_1010__10_245_0_0__25
+    nsg_rule_protocol                               = var.nsg_rule_protocol_in_1010__10_245_0_0__25
+
+
+    nsg_rule_source_address_prefix                  = var.nsg_rule_source_address_prefix_in_1010__10_245_0_0__25
+    nsg_rule_source_port_range                      = var.nsg_rule_source_port_range_in_1010__10_245_0_0__25
+
+    nsg_rule_destination_address_prefix             = var.nsg_rule_destination_address_prefix_in_1010__10_245_0_0__25
+    nsg_rule_destination_port_range                 = var.nsg_rule_destination_port_range_in_1010__10_245_0_0__25
+    
+}
+
+
+module "nsg_security_rule_out_1000__10_245_0_0__25" {
+    providers = {
+        azurerm = azurerm.provider-dev
+    }
+
+    source                                          = "../../modules/nsg-security-rule"
+
+    nsg_rule_name                                   = var.nsg_rule_name_out_1000__10_245_0_0__25
+    nsg_rule_description                            = var.nsg_rule_description_out_1000__10_245_0_0__25
+
+    nsg_name                                        = module.nsg_10_245_0_0__25.name
+    rg_name                                         = module.resource_group.name
+
+    nsg_rule_direction                              = var.nsg_rule_direction_out_1000__10_245_0_0__25
+    nsg_rule_priority                               = var.nsg_rule_priority_out_1000__10_245_0_0__25
+    nsg_rule_access                                 = var.nsg_rule_access_out_1000__10_245_0_0__25
+    nsg_rule_protocol                               = var.nsg_rule_protocol_out_1000__10_245_0_0__25
+
+
+    nsg_rule_source_address_prefix                  = var.nsg_rule_source_address_prefix_out_1000__10_245_0_0__25
+    nsg_rule_source_port_range                      = var.nsg_rule_source_port_range_out_1000__10_245_0_0__25
+
+    nsg_rule_destination_address_prefix             = var.nsg_rule_destination_address_prefix_out_1000__10_245_0_0__25
+    nsg_rule_destination_port_range                 = var.nsg_rule_destination_port_range_out_1000__10_245_0_0__25
+    
+}
+
 /*
 module "subnet" {
 
