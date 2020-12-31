@@ -58,6 +58,7 @@ module "subnet_10_245_0_0__25" {
     service_endpoint_policy_ids                    = var.subnet_service_endpoint_policy_ids_10_245_0_0__25
 
     route_table_id                                 = module.route_table_10_245_0_0__25.id
+    nsg_id                                         = module.nsg_10_245_0_0__25.id
 }
 
 # NOTE: Przyklad subnetu, w ktorym nie mozna tworzyc private link endpoint, private link service i nie ma service endpoint 
@@ -80,6 +81,7 @@ module "subnet_10_245_0_128__25" {
 
     service_endpoints                              = var.subnet_service_endpoints_10_245_0_128__25
     service_endpoint_policy_ids                    = var.subnet_service_endpoint_policy_ids_10_245_0_128__25
+
 }
 
 

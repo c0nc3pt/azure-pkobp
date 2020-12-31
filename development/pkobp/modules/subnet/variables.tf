@@ -127,7 +127,13 @@ EOF
 }
 
 variable "route_table_id" {
-    description = "ID Route Table, ktora ma zostac nalozona na subnet"
+    description = "Route Table ID, ktora ma zostac nalozona na subnet"
+    type        = string
+    default     = null
+}
+
+variable "nsg_id" {
+    description = "Network Security Group ID, ktora ma zostac nalozona na subnet"
     type        = string
     default     = null
 }

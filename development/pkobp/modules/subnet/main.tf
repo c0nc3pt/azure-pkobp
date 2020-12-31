@@ -34,3 +34,10 @@ resource "azurerm_subnet_route_table_association" "pkobp_subnet_route_table_asso
     subnet_id                                       = azurerm_subnet.pkobp_subnet.id
     route_table_id                                  = var.route_table_id
 }
+
+resource "azurerm_subnet_network_security_group_association" "pkobp_subnet_network_security_group_association" {
+    count                                           = var.nsg_id != null ? 1 : 0
+
+    subnet_id                                       = azurerm_subnet.pkobp_subnet.id
+    network_security_group_id                       = var.nsg_id
+}
