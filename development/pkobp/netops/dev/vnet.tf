@@ -191,25 +191,7 @@ module "nsg_security_rule_in_1000__10_245_0_0__25" {
     }
 
     source                                          = "../../modules/nsg-security-rule"
-
-    nsg_rule_name                                   = var.nsg_rule_name_in_1000__10_245_0_0__25
-    nsg_rule_description                            = var.nsg_rule_description_in_1000__10_245_0_0__25
-
-    nsg_name                                        = module.nsg_10_245_0_0__25.name
-    rg_name                                         = module.resource_group.name
-
-    nsg_rule_direction                              = var.nsg_rule_direction_in_1000__10_245_0_0__25
-    nsg_rule_priority                               = var.nsg_rule_priority_in_1000__10_245_0_0__25
-    nsg_rule_access                                 = var.nsg_rule_access_in_1000__10_245_0_0__25
-    nsg_rule_protocol                               = var.nsg_rule_protocol_in_1000__10_245_0_0__25
-
-
-    nsg_rule_source_address_prefix                  = var.nsg_rule_source_address_prefix_in_1000__10_245_0_0__25
-    nsg_rule_source_port_range                      = var.nsg_rule_source_port_range_in_1000__10_245_0_0__25
-
-    nsg_rule_destination_address_prefix             = var.nsg_rule_destination_address_prefix_in_1000__10_245_0_0__25
-    nsg_rule_destination_port_range                 = var.nsg_rule_destination_port_range_in_1000__10_245_0_0__25
-    
+    nsg_rule_object                                 = local.nsg_rule_object_in_1000__10_245_0_0__25
 }
 
 module "nsg_security_rule_in_1010__10_245_0_0__25" {
@@ -218,25 +200,7 @@ module "nsg_security_rule_in_1010__10_245_0_0__25" {
     }
 
     source                                          = "../../modules/nsg-security-rule"
-
-    nsg_rule_name                                   = var.nsg_rule_name_in_1010__10_245_0_0__25
-    nsg_rule_description                            = var.nsg_rule_description_in_1010__10_245_0_0__25
-
-    nsg_name                                        = module.nsg_10_245_0_0__25.name
-    rg_name                                         = module.resource_group.name
-
-    nsg_rule_direction                              = var.nsg_rule_direction_in_1010__10_245_0_0__25
-    nsg_rule_priority                               = var.nsg_rule_priority_in_1010__10_245_0_0__25
-    nsg_rule_access                                 = var.nsg_rule_access_in_1010__10_245_0_0__25
-    nsg_rule_protocol                               = var.nsg_rule_protocol_in_1010__10_245_0_0__25
-
-
-    nsg_rule_source_address_prefix                  = var.nsg_rule_source_address_prefix_in_1010__10_245_0_0__25
-    nsg_rule_source_port_range                      = var.nsg_rule_source_port_range_in_1010__10_245_0_0__25
-
-    nsg_rule_destination_address_prefix             = var.nsg_rule_destination_address_prefix_in_1010__10_245_0_0__25
-    nsg_rule_destination_port_range                 = var.nsg_rule_destination_port_range_in_1010__10_245_0_0__25
-    
+    nsg_rule_object                                 = local.nsg_rule_object_in_1010__10_245_0_0__25
 }
 
 
@@ -246,107 +210,5 @@ module "nsg_security_rule_out_1000__10_245_0_0__25" {
     }
 
     source                                          = "../../modules/nsg-security-rule"
-
-    nsg_rule_name                                   = var.nsg_rule_name_out_1000__10_245_0_0__25
-    nsg_rule_description                            = var.nsg_rule_description_out_1000__10_245_0_0__25
-
-    nsg_name                                        = module.nsg_10_245_0_0__25.name
-    rg_name                                         = module.resource_group.name
-
-    nsg_rule_direction                              = var.nsg_rule_direction_out_1000__10_245_0_0__25
-    nsg_rule_priority                               = var.nsg_rule_priority_out_1000__10_245_0_0__25
-    nsg_rule_access                                 = var.nsg_rule_access_out_1000__10_245_0_0__25
-    nsg_rule_protocol                               = var.nsg_rule_protocol_out_1000__10_245_0_0__25
-
-
-    nsg_rule_source_address_prefix                  = var.nsg_rule_source_address_prefix_out_1000__10_245_0_0__25
-    nsg_rule_source_port_range                      = var.nsg_rule_source_port_range_out_1000__10_245_0_0__25
-
-    nsg_rule_destination_address_prefix             = var.nsg_rule_destination_address_prefix_out_1000__10_245_0_0__25
-    nsg_rule_destination_port_range                 = var.nsg_rule_destination_port_range_out_1000__10_245_0_0__25
-    
+    nsg_rule_object                                 = local.nsg_rule_object_out_1000__10_245_0_0__25
 }
-
-/*
-module "subnet" {
-
-    providers               = {
-        azurerm             = azurerm.provider-dev
-    }
-
-    source                  = "../../modules/subnet"
-
-    name                    = var.vnet_name
-    rg_name                 = module.resource_group.name
-    rg_location             = module.resource_group.location
-
-    address_space           = [ "10.245.0.0/25" ]
-}
-
-module "subnet" {
-
-    providers               = {
-        azurerm             = azurerm.provider-dev
-    }
-
-    source                  = "../../modules/subnet"
-
-    name                    = var.vnet_name
-    rg_name                 = module.resource_group.name
-    rg_location             = module.resource_group.location
-
-
-    subnet_name             = var.subnet_names
-    address_space_new       = var.subnet_address
-
-}
-
-
-module "subnet" {
-
-    providers               = {
-        azurerm             = azurerm.provider-dev
-    }
-
-    source                  = "../../modules/subnet"
-
-    name                    = var.vnet_name
-    rg_name                 = module.resource_group.name
-    rg_location             = module.resource_group.location
-
-    subnet_name            = var.subnet_name_project_name_1
-    subnet_address         = var.subnet_address_project_name_1
-}
-
-module "subnet" {
-
-    providers               = {
-        azurerm             = azurerm.provider-dev
-    }
-
-    source                  = "../../modules/subnet"
-
-    name                    = var.vnet_name
-    rg_name                 = module.resource_group.name
-    rg_location             = module.resource_group.location
-
-    subnet_name            = var.subnet_name_project_name_2
-    subnet_address         = var.subnet_address_project_name_2
-}
-
-module "subnet" {
-
-    providers               = {
-        azurerm             = azurerm.provider-dev
-    }
-
-    source                  = "../../modules/subnet"
-
-    name                    = var.vnet_name
-    rg_name                 = module.resource_group.name
-    rg_location             = module.resource_group.location
-
-    subnet_name            = var.subnet_name_project_name_3
-    subnet_address         = var.subnet_address_project_name_3
-}
-*/
