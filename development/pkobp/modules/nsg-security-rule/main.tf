@@ -17,7 +17,7 @@ resource "azurerm_network_security_rule" "pkobp_network_security_rule" {
     destination_address_prefix                  = var.nsg_rule_object.destination_address_prefix
     destination_port_range                      = var.nsg_rule_object.destination_port_range 
 
-    source_application_security_group_ids       = var.nsg_rule_object.source_application_security_group_ids
-    destination_application_security_group_ids  = var.nsg_rule_object.destination_application_security_group_ids
-
+    source_application_security_group_ids       = (var.nsg_rule_object.source_application_security_group_ids == null) ? null : var.nsg_rule_object.source_application_security_group_ids
+    destination_application_security_group_ids  = (var.nsg_rule_object.destination_application_security_group_ids == null) ? null : var.nsg_rule_object.destination_application_security_group_ids
+    
 }
