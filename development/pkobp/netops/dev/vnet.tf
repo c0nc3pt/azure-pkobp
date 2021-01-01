@@ -157,17 +157,7 @@ module "route_01_10_245_0_0__25" {
     }
 
     source                                         = "../../modules/route"
-
-    route_name                                     = var.route_name_01_10_245_0_0__25
-
-    rg_name                                        = module.resource_group.name
-
-    route_table_name                               = module.route_table_10_245_0_0__25.name
-
-    address_prefix                                 = var.route_address_prefix_01_10_245_0_0__25
-
-    next_hop_type                                  = var.route_next_hop_type_01_10_245_0_0__25
-    next_hop_in_ip_address                         = var.route_next_hop_in_ip_address_01_10_245_0_0__25
+    route_object                                   = local.route_object_01_10_245_0_0__25
 }
 
 module "route_02_10_245_0_0__25" {
@@ -177,7 +167,7 @@ module "route_02_10_245_0_0__25" {
     }
 
     source                                         = "../../modules/route"
-
+    /*
     route_name                                     = var.route_name_02_10_245_0_0__25
 
     rg_name                                        = module.resource_group.name
@@ -187,7 +177,8 @@ module "route_02_10_245_0_0__25" {
     address_prefix                                 = var.route_address_prefix_02_10_245_0_0__25
 
     next_hop_type                                  = var.route_next_hop_type_02_10_245_0_0__25
-    
+    */
+    route_object                                    = local.route_object_02_10_245_0_0__25    
 }
 
 

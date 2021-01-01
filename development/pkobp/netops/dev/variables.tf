@@ -254,46 +254,34 @@ variable "rt_disable_bgp_route_propagation_10_245_0_0__25" {
     default                 = false 
 }
 
-variable "route_name_01_10_245_0_0__25" {
-    description             = "nazwa route w route table"
-    type                    = string
-    default                 = "route_01_10_245_0_0__25" 
+# NOTE: Obiekt definiujacy Route w Route Table.
+# route_name:                 Nazwa route w route table. 
+# route_table_name:           Nazwa route table. 
+# rg_name:                    Nazwa resource group.
+# address_prefix:             Prefix dla drogi w formacie 0-255.0-255.0-255.0-255/0-32 np. 10.13.0.0/16.
+# next_hop_type:              Rodzaj next hop, poprawne wartosci to VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance lub None.
+# next_hop_in_ip_address:     Adres IP next hop ma zastosowanie tylko jezeli next_hop_type jest ustawiony na VirtualAppliance, jezeli jest ustawiony inaczej nalezy podac null.
+
+locals {
+    route_object_01_10_245_0_0__25 = {
+        route_name                = "route_01_10_245_0_0__25"
+        route_table_name          = module.route_table_10_245_0_0__25.name
+        rg_name                   = module.resource_group.name
+        address_prefix            = "10.13.0.0/16"
+        next_hop_type             = "VirtualAppliance"
+        next_hop_in_ip_address    = "10.255.231.69"
+    }
 }
 
-variable "route_address_prefix_01_10_245_0_0__25" {
-    description             = "Prefix dla drogi w formacie 0-255.0-255.0-255.0-255/0-32 np. 10.13.0.0/16"
-    type                    = string
-    default                 = "10.13.0.0/16" 
-}
-
-variable "route_next_hop_type_01_10_245_0_0__25" {
-    description             = "Rodzaj next hop, poprawne wartosci to VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance and None"
-    type                    = string
-    default                 = "VirtualAppliance"
-}
-
-variable "route_next_hop_in_ip_address_01_10_245_0_0__25" {
-    description             = "Adres IP next hop ma zastosowanie tylko jezeli next_hop_type jest ustawiony na VirtualAppliance"
-    type                    = string  
-    default                 = "10.255.231.69"
-}
-
-variable "route_name_02_10_245_0_0__25" {
-    description             = "nazwa route w route table"
-    type                    = string
-    default                 = "route_02_10_245_0_0__25" 
-}
-
-variable "route_address_prefix_02_10_245_0_0__25" {
-    description             = "Prefix dla drogi w formacie 0-255.0-255.0-255.0-255/0-32 np. 10.13.0.0/16"
-    type                    = string
-    default                 = "172.16.0.0/16" 
-}
-
-variable "route_next_hop_type_02_10_245_0_0__25" {
-    description             = "Rodzaj next hop, poprawne wartosci to VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance and None"
-    type                    = string
-    default                 = "None"
+locals {
+    route_object_02_10_245_0_0__25 = {
+        route_name                = "route_02_10_245_0_0__25"
+        route_table_name          = module.route_table_10_245_0_0__25.name
+        rg_name                   = module.resource_group.name
+        address_prefix            = "172.16.0.0/16"
+        next_hop_type             = "None"
+        next_hop_in_ip_address    = null
+    }
 }
 
 variable "nsg_name_10_245_0_0__25" {
